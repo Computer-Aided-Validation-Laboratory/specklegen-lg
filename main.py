@@ -25,7 +25,7 @@ config = args.config
 print(f"Initialized code with input deck: {config}")
 
 #Get the config file values from the reader
-config_dict, visualize, save, filetype, subdivisions, mode, ppi, vis_diagnostics, save_diagnostics = reader.configReader(config)
+config_dict, visualize, save, filetype, subdivisions, mode, ppi, vis_diagnostics, save_diagnostics, edge = reader.configReader(config)
 
 #Console outputs
 print(f"Solving for run name: {config_dict["run_name"]}")
@@ -41,7 +41,8 @@ speckleGenerator = generateSpeckle(
     blackwhite = config_dict["blackwhite"],
     speckle_size = config_dict["speckle_size"],
     run = config_dict["run_name"], 
-    mode = mode
+    mode = mode, 
+    edgeclipping = edge
 )
 
 #Generate speckle pattern.
