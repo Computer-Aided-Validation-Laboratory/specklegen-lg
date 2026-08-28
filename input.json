@@ -4,7 +4,7 @@
     //Case 0 --> Your input deck is read. 
     //Case 1 --> test_square.json: Simple square image for testing. 
     //Case 2 --> test_rectangle.json: Same test as above but extended to rectangle.
-    "case": 2,
+    "case": 1,
     "run_name": "run1",
 
 
@@ -24,7 +24,11 @@
 
     //Speckle pattern resolution
     //NOTE: This is optional.
-    "subdivisions":10, //How many subdivisions do you want inside a pixel. Default is 1 
+    "subdivisions": 10, //How many subdivisions do you want inside a pixel. Default is 1 
+
+    //Speckle pattern edge-clipping
+    //Prevents any half or fractional speckles from being generated
+    "edgeclipping": false,
 
     //Colour mode
     //Mode 0 --> Black dots on white background.
