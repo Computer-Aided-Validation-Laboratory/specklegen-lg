@@ -3,10 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.stats import qmc
 from PIL import Image as im
 import os
+import math
 
 class generateSpeckle:
 
-    def __init__(self, width, height, speckle_size, blackwhite, run, mode):
+    def __init__(self, width, height, speckle_size, blackwhite, run, mode = 0, edgeclipping = False):
 
         """
         Class to generate speckle patterns. 
@@ -21,6 +22,7 @@ class generateSpeckle:
         blackwhite                  --> Fraction of one colour to another.
         run                         --> Run number.
         mode                        --> Colour grading. 0 is black on white, 1 is white on black.
+        edgeclipping                --> Flag to stop any fractional speckles being generated.
         """
 
         #Assign variables to self
@@ -30,6 +32,7 @@ class generateSpeckle:
         self.blackwhite = blackwhite
         self.run = run
         self.mode = mode
+        self.edgeclipping = edgeclipping
 
         #Colour information
         if mode == 1:
@@ -54,6 +57,8 @@ class generateSpeckle:
         function to generate the positions of the speckles. 
         Uses halton sampling to create pointwise speckles, think of it as seed points. 
 
+        Can also clip the upper and lower bounds to stop any fractional speckles from being generated.
+
         Outputs:
         speckles --> 2D array of X,Y coordinates for speckles.
         """
@@ -71,7 +76,12 @@ class generateSpeckle:
 
         #Create the halton sampler
         sampler = qmc.Halton(d = 2, optimization = "random-cd")
-        speckles = sampler.integers(n = n_speckles, l_bounds = [0,0], u_bounds = [self.width, self.height])
+        if self.edgeclipping:
+            speckles = sampler.integers(n = n_speckles, 
+                                        l_bounds = [math.ceil(0 + 2 * self.speckle_radius), math.ceil(0 + 2 * self.speckle_radius)], 
+                                        u_bounds = [int(self.width -  2 * self.speckle_radius), int(self.height -  2 *self.speckle_radius)])
+        else:
+            speckles = sampler.integers(n = n_speckles, l_bounds = [0,0], u_bounds = [self.width, self.height])
 
         #Console output
         print(f"Generated {n_speckles} speckle seeds.")
