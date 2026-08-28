@@ -98,4 +98,11 @@ def configReader(config):
     if save_diagnostics is None:
         save_diagnostics = True
 
-    return config_dict, visualize, save, filetype, subdivisions, mode, ppi, vis_diagnostics, save_diagnostics
+    #Edge-clipping
+    edge = config_dict.get("edgeclipping")
+
+    #Default edge clipping is false
+    if edge is None:
+        edge = False
+
+    return config_dict, visualize, save, filetype, subdivisions, mode, ppi, vis_diagnostics, save_diagnostics, edge
