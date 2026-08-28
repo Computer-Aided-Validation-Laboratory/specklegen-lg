@@ -162,7 +162,7 @@ class generateSpeckle:
         ppi         --> User specified pixels per inch if needed. Defaults to 50
 
         Outputs:
-        Saved speckle pattern image.
+        Saved speckle pattern image for both visualization (with axes) and directly for printing.
         """
 
         #Get inch requirements:
@@ -181,12 +181,12 @@ class generateSpeckle:
         ax.set_xscale("linear")
         ax.set_ylim((0, self.height))
         ax.set_xscale("linear")
-        ax.set_title(f"Speckle pattern for run: {self.run}")
 
         if save:
             #File names
             directory = "output/"+self.run+"/"
-            save_path = directory+self.run+"_SpecklePattern"+filetype
+            save_path_axis = directory+self.run+"_SpecklePatternAxis"+filetype
+            save_path_print = directory+self.run+"_SpecklePatternPrint"+filetype
             os.makedirs(directory, exist_ok = True)
 
             #Render image
@@ -194,10 +194,23 @@ class generateSpeckle:
 
             #Saving as a .tiff file
             image = im.frombytes("RGB", fig.canvas.get_width_height(), fig.canvas.tostring_rgb())
-            image.save(save_path)
+            image.save(save_path_axis)
+
+            #Turn axis off to save the printing
+            ax.axis("off")
+            fig.canvas.draw()
+
+            image = im.frombytes("RGB", fig.canvas.get_width_height(), fig.canvas.tostring_rgb())
+            image.save(save_path_print)
+
+            #Turn axis back on afterwards to see the proper pattern.
+            ax.axis("on")
+            ax.set_title(f"Speckle pattern for run: {self.run}")
+            fig.canvas.draw()
 
             #Console output
-            print(f"Speckle pattern saved as: {save_path}")
+            print(f"Speckle pattern saved as: {save_path_axis}")
+            print(f"Pattern for printing saved as: {save_path_print}")
 
         if visualize:
             #Show image
