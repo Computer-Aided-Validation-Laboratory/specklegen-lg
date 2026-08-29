@@ -1,3 +1,10 @@
+"""
+Code to check speckle pattern quality. 
+Currently has one diagnostic: FFT to check average speckle size.
+
+Code written by: Lavya
+"""
+
 import numpy as np
 import scipy.fft as fft
 import matplotlib.pyplot as plt
