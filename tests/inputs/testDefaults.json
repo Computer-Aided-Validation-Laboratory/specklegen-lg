@@ -1,0 +1,21 @@
+{   
+    //PROBLEM SETUP
+    //Example Scripts
+    //Case 0 --> Your input deck is read. 
+    //Case 1 --> test_square.json: Simple square image for testing. 
+    //Case 2 --> test_rectangle.json: Same test as above but extended to rectangle.
+    "case": 0,
+    "run_name": "run1",
+
+
+    //SPECKLE PATTERN
+    //Speckle Pattern Information
+    "width": 500, //px
+    "height": 500, //px
+    "blackwhite": 0.10,
+    "speckle_size": 30, //px
+
+    //DIAGNOSTICS
+    "diagnostics": true
+
+}

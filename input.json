@@ -1,0 +1,46 @@
+{   
+    //PROBLEM SETUP
+    //Example Scripts
+    //Case 0 --> Your input deck is read. 
+    //Case 1 --> test_square.json: Simple square image for testing. 
+    //Case 2 --> test_rectangle.json: Same test as above but extended to rectangle.
+    "case": 1,
+    "run_name": "run1",
+
+
+    //SPECKLE PATTERN
+    //Speckle Pattern Information
+    "width": 500, //px
+    "height": 500, //px
+    "blackwhite": 0.10,
+    "speckle_size": 30, //px
+
+    //Speckle Pattern Saving and Loading
+    //NOTE: These are all optional, default values are true for both and tiff.
+    "visualize" : true,
+    "save": true,
+    "filetype": ".tiff", //Can be either tiff or bitmap.
+    "ppi": 50, //Optional as well, defaults to 50
+
+    //Speckle pattern resolution
+    //NOTE: This is optional.
+    "subdivisions": 10, //How many subdivisions do you want inside a pixel. Default is 1 
+
+    //Speckle pattern edge-clipping
+    //Prevents any half or fractional speckles from being generated
+    //Defaults to false
+    "edgeclipping": false,
+
+    //Colour mode
+    //Mode 0 --> Black dots on white background.
+    //Mode 1 --> White dots on black background.
+    //Default is mode 0
+    "mode" : 0,
+
+
+    //DIAGNOSTICS
+    "diagnostics": true,
+    "visualize_diagnostics": true, //Defaults to true
+    "save_diagnostics": true //Defaults to true
+
+}
