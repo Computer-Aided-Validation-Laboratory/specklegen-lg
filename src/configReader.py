@@ -1,3 +1,8 @@
+"""
+Code to read the input .json files and ensure proper default selection. 
+
+Code written by: Lavya
+"""
 import commentjson
 
 def configReader(config):
