@@ -1,3 +1,10 @@
+"""
+Speckle generator class. 
+Uses matplotlib to generate speckle pattern. 
+
+Code written by: Lavya
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import qmc
