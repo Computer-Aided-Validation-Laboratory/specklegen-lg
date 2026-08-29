@@ -1,3 +1,9 @@
+"""
+Main speckle generator code. 
+
+Code written by: Lavya
+"""
+
 import numpy as np
 import src.configReader as reader
 from src.generateSpeckle import generateSpeckle
