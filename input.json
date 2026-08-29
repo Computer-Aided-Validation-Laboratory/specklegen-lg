@@ -28,6 +28,7 @@
 
     //Speckle pattern edge-clipping
     //Prevents any half or fractional speckles from being generated
+    //Defaults to false
     "edgeclipping": false,
 
     //Colour mode
